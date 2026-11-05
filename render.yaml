@@ -1,0 +1,29 @@
+# Render Blueprint. SQLite needs a persistent disk, which requires a paid instance type.
+services:
+  - type: web
+    name: prevolant-website
+    runtime: docker
+    plan: starter
+    healthCheckPath: /healthz
+    autoDeploy: true
+    disk:
+      name: prevolant-data
+      mountPath: /var/data
+      sizeGB: 2
+    envVars:
+      - { key: NODE_ENV, value: production }
+      - { key: TRUST_PROXY, value: "1" }
+      - { key: DB_PATH, value: /var/data/prevolant.db }
+      - { key: UPLOAD_DIR, value: /var/data/uploads }
+      - { key: SITE_URL, sync: false }
+      - { key: ADMIN_PATH, sync: false }
+      - { key: SESSION_SECRET, sync: false }
+      - { key: DATA_ENCRYPTION_KEYS, sync: false }
+      - { key: DATA_KEY_CURRENT, value: "1" }
+      - { key: SMTP_HOST, sync: false }
+      - { key: SMTP_PORT, value: "587" }
+      - { key: SMTP_USER, sync: false }
+      - { key: SMTP_PASS, sync: false }
+      - { key: MAIL_FROM, sync: false }
+      - { key: TURNSTILE_SITEKEY, sync: false }
+      - { key: TURNSTILE_SECRET, sync: false }

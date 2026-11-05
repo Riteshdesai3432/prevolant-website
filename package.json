@@ -1,0 +1,32 @@
+{
+  "name": "prevolant-website",
+  "version": "1.0.0",
+  "description": "Prevolant website with secure admin CMS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server.js",
+    "dev": "node --disable-warning=ExperimentalWarning --watch server.js",
+    "test": "node --disable-warning=ExperimentalWarning --test tests/app.test.js",
+    "create-owner": "node --disable-warning=ExperimentalWarning scripts/create-owner.js",
+    "gen:secrets": "node scripts/gen-secrets.js",
+    "rotate-keys": "node --disable-warning=ExperimentalWarning scripts/rotate-keys.js",
+    "backup": "node --disable-warning=ExperimentalWarning scripts/backup.js"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "argon2": "^0.45.2",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.22.3",
+    "express-rate-limit": "^8.7.3",
+    "helmet": "^8.3.0",
+    "multer": "^2.5.0",
+    "nodemailer": "^10.3.1",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.35.5",
+    "zod": "^4.6.7"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}
